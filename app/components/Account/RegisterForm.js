@@ -31,8 +31,6 @@ export default function RegisterForm (){
             }
         }
 }
-
-
     return (
         
         <View style = {styles.formCotainer} behavior="padding" enabled>
@@ -49,6 +47,7 @@ export default function RegisterForm (){
             />
              <Input 
             placeholder = "Codigo UDG"
+            keyboardType="numeric"
             containerStyle={styles.inputForm}
             onChange = {e => setUdgCode(e.nativeEvent.text)}
             rightIcon = {
@@ -71,7 +70,7 @@ export default function RegisterForm (){
             />
             <Input 
             placeholder="contraseña"
-            password = {true}
+            //password = {true}
             secureTextEntry = {hidePassword}
             containerStyle={styles.inputForm}
             onChange ={e => setPassword(e.nativeEvent.text)}
@@ -86,7 +85,7 @@ export default function RegisterForm (){
             />
             <Input 
             placeholder="Repetir contraseña"
-            password = {true}
+            //password = {true}
             secureTextEntry = {hideRepeatPassword}
             containerStyle={styles.inputForm}
             onChange ={e => setRepeatPassword(e.nativeEvent.text)}
