@@ -1,5 +1,7 @@
 import React from "react";
 import {View,Text} from "react-native";
+import {Button} from "react-native-elements";
+import * as firebase from "firebase";
 
  export default function UserLogged (){
      return(
@@ -7,6 +9,7 @@ import {View,Text} from "react-native";
              <Text>
                  Usuario logeado
              </Text>
+             <Button title = "cerrar sesion" onPress = {() => firebase.auth().signOut()}/>
          </View>
      )
 
