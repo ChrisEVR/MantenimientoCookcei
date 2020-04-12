@@ -43,7 +43,7 @@ import Loading from "../Loading";
 
                     })
                     .catch(() => {
-                        toastRef.current.show("Error al crear la cuenta")
+                        toastRef.current.show("ERROR/ CORREO YA REGISTRADO")
                     });
                 }
                     
