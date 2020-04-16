@@ -3,6 +3,7 @@ import {View,Text, Dimensions,StyleSheet,ScrollView} from "react-native";
 import {Rating,ListItem,Button} from "react-native-elements";
 import CarouselImages from "../../components/CarouselImages"
 import Map from "../../components/Map";
+import ListReviews from "../../components/Restaurants/ListReviews"
 import * as firebase from "firebase";
 
 const screenWidth = Dimensions.get("window").width;
@@ -11,6 +12,8 @@ export default function Restaurant(props){
     const { navigation } = props;
     const { restaurant } = navigation.state.params.restaurant.item;
     const [imagesRestaurant, setImagesRestaurant] = useState([]);
+    const [rating, setRating] = useState(restaurant.rating);
+
 
     useEffect(() => {
         const arrayUrls = [];
@@ -36,8 +39,10 @@ export default function Restaurant(props){
     return (
         <ScrollView style = {styles.viewBody}>
             <CarouselImages arrayImages={imagesRestaurant} height={250} width={screenWidth} />
-            <TitleRestaurant name={restaurant.name} description={restaurant.description} rating={restaurant.rating} />
+            <TitleRestaurant name={restaurant.name} description={restaurant.description} rating={rating} />
             <RestaurantInfo location ={restaurant.location} name={restaurant.name} address={restaurant.address}/>
+            <MenuBtn navigation ={navigation} idRestaurant={restaurant.id}/>
+            <ListReviews navigation={navigation} idRestaurant={restaurant.id} setRating={setRating}/>
         </ScrollView>
         
     );
@@ -90,13 +95,31 @@ function RestaurantInfo(props){
                 containerStyle={styles.containerListItem}
                 />
             ))}
-            <Button 
-            title="Menu"
-            onPress ={() => console.log("ver Menu")}
-            buttonStyle ={styles.menuBtn}
-            />
         </View>
     )
+}
+
+function MenuBtn(props){
+    const {navigation, idRestaurant} = props;
+
+    return(
+        <View >
+        <Button 
+            title="Ver Menu"
+            buttonStyle ={styles.menuBtn}
+            titleStyle = {styles.btnTitleMenu}
+            icon={{
+                type: "material-community",
+                name: "food",
+                color: "#009688"
+            }}
+            onPress ={() => navigation.navigate("Menu", {
+                idRestaurant: idRestaurant
+            })}
+        />
+        </View>
+    )
+
 }
 
 const styles = StyleSheet.create({
@@ -133,6 +156,9 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1
     },
     menuBtn: {
-        backgroundColor:"#009688"
+        backgroundColor: "transparent"
+    },
+    btnTitleMenu:{
+        color:"#009688"
     }
 })
