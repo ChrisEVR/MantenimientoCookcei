@@ -1,14 +1,98 @@
-import React from "react";
-import {View,Text} from "react-native";
+import React, {useState,useEffect} from "react";
+import {View,Text,StyleSheet,FlatList,Image, Platform} from "react-native";
+import {Icon,SearchBar,ListItem} from "react-native-elements"
+import {FireSQL} from "firesql";
+import firebase from "firebase/app";
 
-export default function Search(){
+const fireSQL = new FireSQL(firebase.firestore(), {includeId: "id"});
+
+export default function Search(props){
+    const {navigation} = props;
+    const [restaurants, setRestaurants] = useState([]);
+    const [search, setSearch] = useState("");
+
+    useEffect(() => {
+        if (search){
+            fireSQL.query(`SELECT * FROM restaurants WHERE name LIKE '${search}%'`).then(response =>{
+                setRestaurants(response);
+                console.log(response);
+            });
+        }
+    }, [search]);
+
+  
     return(
-        <View>
-            <Text>
-                Estamos en la pagina de search!
-            </Text>
+        <View  >
+         <SearchBar
+         placeholder = "Buscar"
+         onChangeText={e => setSearch(e)}
+         value ={search}
+         containerStyle ={styles.searchBar}
+         lightTheme = {Platform}
+          /> 
+          {restaurants.length === 0 ? (
+              <View style = {{backgroundColor: "white"}} > 
+                <NoFoundRestaurants />
+
+              </View>
+          ) : (
+
+            <FlatList
+            data = {restaurants}
+            renderItem={restaurant => <Restaurant restaurant={restaurant} navigation={navigation}/>}
+            keyExtractor={(item,index) => index.toString()}
+             />
+
+          )}
         </View>
 
     );
 
 }
+
+function Restaurant(props){
+    const {restaurant,navigation} = props;
+    const {name,images} = restaurant.item;
+    const [imageRestaurant,setImageRestaurant] = useState(null);
+
+    useEffect(() => {
+        const image = images[0];
+        firebase.storage().ref(`restaurant-images/${image}`).getDownloadURL().then(response => {
+            setImageRestaurant(response);
+        })
+    },[])
+
+    return(
+        <ListItem
+        title={name}
+        leftAvatar={{source: {uri: imageRestaurant}}}
+        rightIcon={
+        <Icon
+        type= "material-community"
+        name= "chevron-right"
+        />
+        }
+        onPress={() => navigation.navigate("Restaurant", {
+            restaurant: restaurant.item
+        } )}
+         />
+    )
+}
+
+function NoFoundRestaurants(){
+    return(
+        <View style = {{flex: 1, alignItems: "center"}}>
+            <Image
+            source={require("../../assets/img/no-result-found.png")}
+            resizeMode="cover"
+            style={{width: 200, height: 200}} 
+            />
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    searchBar:{
+        marginBottom: 20,
+    }
+})

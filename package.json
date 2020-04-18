@@ -18,6 +18,7 @@
     "expo-location": "~8.1.0",
     "expo-permissions": "~8.1.0",
     "firebase": "~7.8.0",
+    "firesql": "^2.0.2",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
@@ -39,6 +40,7 @@
     "react-navigation": "4.0.10",
     "react-navigation-stack": "^2.3.11",
     "react-navigation-tabs": "^2.8.11",
+    "use-debounce": "3.1.0",
     "uuid": "~3.3.3"
   },
   "devDependencies": {
