@@ -65,6 +65,6 @@ const styles = StyleSheet.create ({
         borderTopWidth:35
     },
     btnCloseSessionText: {
-        color: "#009688"
+        color: "#fcc11e"
     }
 })

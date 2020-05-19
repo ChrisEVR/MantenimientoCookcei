@@ -12,7 +12,7 @@ export default function Login(props){
     return (
         <ScrollView>
         <Image 
-            source = {require("../../../assets/img/logo-provicional.png")}
+            source = {require("../../../assets/img/logo.png")}
             style = {styles.logo}
             resizeMode= "contain"
         />
@@ -56,11 +56,11 @@ const styles = StyleSheet.create({
         
     },
     btnRegister:{
-        color:"#009688",
+        color:"#be1e2d",
         fontWeight: 'bold'
     },
     divider: {
-        backgroundColor:"#009688",
+        backgroundColor:"#be1e2d",
         margin: 40
 
     }

@@ -365,10 +365,10 @@ const styles = StyleSheet.create({
         paddingLeft: 5
     },
     viewMapBtnCancel: {
-        backgroundColor: "#a60d0d"
+        backgroundColor: "#be1e2d"
     },
     btnAddRestaurant: {
-        backgroundColor: "#009688",
+        backgroundColor: "#be1e2d",
         margin: 20
     }
 

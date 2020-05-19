@@ -56,7 +56,7 @@ export default function ListReviews(props){
                 icon={{
                     type: "material-community",
                     name: "square-edit-outline",
-                    color: "#009688"
+                    color: "#fcc11e"
                 }}
                 onPress={() => navigation.navigate("AddReviewRestaurant", {
                     idRestaurant: idRestaurant,
@@ -65,7 +65,7 @@ export default function ListReviews(props){
                 />
             ) : (
                 <View style ={{flex: 1}}>
-                    <Text style={{textAlign:"center", color:"#009688", padding: 20}}
+                    <Text style={{textAlign:"center", color:"#fcc11e", padding: 20}}
                     onPress={() => navigation.navigate("Login")}
                     >
                     Para Escribir un comentario u ordenar comida{"\n"}es necesario Iniciar Sesion{"\n"}
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent"
     },
     btnTitleAddReview:{
-        color:"#009688"
+        color:"#fcc11e"
     },
     viewReview: {
         flexDirection: "row",

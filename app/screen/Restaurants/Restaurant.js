@@ -155,7 +155,7 @@ function RestaurantInfo(props){
                 leftIcon={{
                     name: item.iconName,
                     type: item.iconType,
-                    color: "#009688"
+                    color: "#be1e2d"
                 }}
                 containerStyle={styles.containerListItem}
                 />
@@ -176,7 +176,7 @@ function MenuBtn(props){
             icon={{
                 type: "material-community",
                 name: "food",
-                color: "#009688"
+                color: "#fcc11e"
             }}
             onPress ={() => navigation.navigate("Menu", {
                 idRestaurant: idRestaurant
@@ -236,6 +236,7 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent"
     },
     btnTitleMenu:{
-        color:"#009688"
+        color: "#fcc11e"
+
     }
 })

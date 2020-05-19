@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
 
     },
     btnLogin: {
-        backgroundColor:"#009688"
+        backgroundColor:"#be1e2d"
 
     },
     btnContainer: {

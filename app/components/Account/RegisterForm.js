@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import {StyleSheet,View,Number} from "react-native";
 import {Button,Input,Icon} from "react-native-elements";
-import { validateEmail,validateUdgCode } from "../../utils/Validation";
+import { validateEmail } from "../../utils/Validation";
 import * as firebase from "firebase";
 import {withNavigation} from "react-navigation"
 import Loading from "../Loading";
@@ -11,20 +11,18 @@ import Loading from "../Loading";
     const [hidePassword,setHidePassword] = useState(true);
     const [hideRepeatPassword,setHideRepeatPassword] = useState(true);
     const [isVisibleLoading, setIsVisibleLoading] = useState(false);
-    const [userName, setUserName] = useState("");
-    const [udgCode, setUdgCode] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
 
     const register = async () => {
         setIsVisibleLoading (true);
-        if (!userName||!udgCode||!email || !password || !repeatPassword){
+        if (!email || !password || !repeatPassword){
             toastRef.current.show("*Hay campos sin llenar")
         }
         else{
             if (!validateEmail(email)){
-                toastRef.current.show("El emal no es correcto")
+                toastRef.current.show("El email no es correcto")
             }
             else{
                 if (password !== repeatPassword){
@@ -55,29 +53,6 @@ import Loading from "../Loading";
     return (
         
         <View style = {styles.formCotainer} behavior="padding" enabled> 
-        <Input 
-            placeholder = "Nombre de Usuario"
-            containerStyle={styles.inputForm}
-            onChange = {e => setUserName(e.nativeEvent.text)}
-            rightIcon = {
-                <Icon 
-                type= "material-community"
-                name="account-plus"
-                iconStyle={styles.iconRight}/>
-            }
-            />
-             <Input 
-            placeholder = "Codigo UDG"
-            keyboardType="numeric"
-            containerStyle={styles.inputForm}
-            onChange = {e => setUdgCode(e.nativeEvent.text)}
-            rightIcon = {
-                <Icon 
-                type= "material-community"
-                name="school"
-                iconStyle={styles.iconRight}/>
-            }
-            />
             <Input 
             placeholder = "Correo electronico"
             containerStyle={styles.inputForm}
@@ -137,7 +112,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 30
+        marginTop: 50
     },
     inputForm:{
         width: "100%",
@@ -147,10 +122,10 @@ const styles = StyleSheet.create({
         color: "#c1c1c1"
     },
     btnContainerRegister: {
-        marginTop: 20,
+        marginTop: 70,
         width: "95%"
     },
     btnRegister: {
-        backgroundColor:"#009688"
+        backgroundColor:"#be1e2d"
     }
 })

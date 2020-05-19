@@ -54,7 +54,7 @@ const styles = StyleSheet.create ({
         alignItems: "center"
     },
     btnStyle: {
-        backgroundColor: "#009688"  
+        backgroundColor: "#be1e2d"  
     },
     btnContainer:{
         width: "70%"

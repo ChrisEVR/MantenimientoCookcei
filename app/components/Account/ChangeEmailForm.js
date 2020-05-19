@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         
     },
     btn :{
-        backgroundColor: "#009688"
+        backgroundColor: "#be1e2d"
     }
 
 })
