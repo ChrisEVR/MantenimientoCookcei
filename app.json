@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "CookCei",
     "slug": "CookCei",
     "platforms": [
       "ios",
@@ -22,10 +22,18 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.yourcompany.yourappname",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
-    "android":{
-      "permissions": ["CAMERA_ROLL","LOCATION"]
-    }
+    "android": {
+      "package": "com.yourcompany.yourappname",
+      "versionCode": 1,
+      "permissions": [
+        "CAMERA_ROLL",
+        "LOCATION"
+      ]
+    },
+    "description": "Proyecto de Ingenieria de software"
   }
 }
