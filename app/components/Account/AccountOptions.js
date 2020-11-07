@@ -13,7 +13,7 @@ export default function AccountOptions(props){
     const [renderComponet,setRenderComponet] = useState(null);
 
     const menuOptions = [{
-        title: "Cambiar nombre",
+        title: "Modificar nombre",
         iconType: "material-community",
         iconNameLeft: "account-circle",
         iconColorLeft: "#ccc",
@@ -22,7 +22,7 @@ export default function AccountOptions(props){
         onPress: () => selectedComponet("displayName")
     },
     {
-        title: "Cambiar Email",
+        title: "Modificar Email",
         iconType: "material-community",
         iconNameLeft: "at",
         iconColorLeft: "#ccc",
@@ -31,7 +31,7 @@ export default function AccountOptions(props){
         onPress: () => selectedComponet("email")
     },
     {
-        title: "Cambiar Contraseña",
+	title: "Modificar: Contraseña",
         iconType: "material-community",
         iconNameLeft: "lock-reset",
         iconColorLeft: "#ccc",
